@@ -19,8 +19,10 @@ int main(void) {
 
     while (1) {
         data->counter++;
-        if (data->counter % data->multiple == 0)
+        if (data->counter % data->multiple == 0) {
             printf("Process 2 Shared counter %d is multiple of %d\n", data->counter, data->multiple);
+        } else {
+            printf("Process 2 Shared counter %d\n",data->counter);
         if (data->counter > 500) {
             printf("Process 2 Counter > 500. terminating.\n");
             shmdt(data);

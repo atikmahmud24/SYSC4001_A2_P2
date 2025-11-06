@@ -25,6 +25,7 @@ int main(void) {
             printf("Process 2 Counter > 500. terminating.\n");
             shmdt(data);
             usleep(1000000);
+            return 0;
         }
     }
 }

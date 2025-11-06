@@ -10,16 +10,16 @@
 typedef struct {
     int multiple;
     int counter;
-} shared_var;
+} sharedvar_t;
 
 int main(void) {
-    int shmid = shmget(SHM_KEY, sizeof(shared_var), IPC_CREAT | 0666);
+    int shmid = shmget(SHM_KEY, sizeof(sharedvar_t), IPC_CREAT | 0666);
     if (shmid < 0) {
         perror("shmget failed");
         return 1;
     }
 
-    shared_var *data = (shared_var *)shmat(shmid, NULL, 0);
+    sharedvar_t *data = (sharedvar_t *)shmat(shmid, NULL, 0);
     data->multiple = 3;
     data->counter = 0;
 

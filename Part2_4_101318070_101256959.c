@@ -25,7 +25,7 @@ int main(void) {
 
     pid_t pid = fork();
     if (pid < 0) { 
-      perror("fork failed"); 
+      perror("Fork failed, child process is not created"); 
       return 1;
     }
 

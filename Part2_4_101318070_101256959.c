@@ -38,15 +38,14 @@ int main(void) {
     while (1) {
         data->counter++;
         if (data->counter % data->multiple == 0)
-            printf("Process1 Counter %d is multiple of %d\n", data->counter, data->multiple);
+            printf("Process 1 Counter %d is multiple of %d\n", data->counter, data->multiple);
         if (data->counter > 500) {
-            printf("Process1 Counter > 500, terminating.\n");
+            printf("Process 1 Counter > 500, terminating.\n");
             kill(pid, SIGTERM);
             shmdt(data);
             shmctl(shmid, IPC_RMID, NULL);
-            exit(0);
+            usleep(1000000);
         }
-        usleep(80000);
     }
     return 0;
 }

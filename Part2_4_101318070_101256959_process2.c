@@ -14,10 +14,7 @@ int main(void) {
     int shmid = shmget(SHM_KEY, sizeof(sharedvar_t), 0666);
     sharedvar_t *data = (sharedvar_t *)shmat(shmid, NULL, 0);
 
-    while (data->counter <= 100)
-        usleep(100000);
-
-    while (1) {
+    while (data->counter >100) {
         data->counter++;
         if (data->counter % data->multiple == 0) {
             printf("Process 2 Shared counter: %d is multiple of %d\n", data->counter, data->multiple);
